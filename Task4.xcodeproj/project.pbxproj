@@ -23,6 +23,8 @@
 		BC70CBE627DF46160003CEC4 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE527DF46160003CEC4 /* Map.swift */; };
 		BC70CBE827DF46480003CEC4 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE727DF46480003CEC4 /* Time.swift */; };
 		BC70CBEA27DF4C5F0003CEC4 /* HTTPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE927DF4C5F0003CEC4 /* HTTPModel.swift */; };
+		BC70CBF427DF71830003CEC4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF327DF71830003CEC4 /* MapView.swift */; };
+		BC70CBF627DF71F10003CEC4 /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF527DF71F10003CEC4 /* AvailabilityView.swift */; };
 		E18108920768AA2DDA77B8FD /* Pods_Task4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E19019E5D0DB8FB342C934 /* Pods_Task4.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,8 @@
 		BC70CBE527DF46160003CEC4 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		BC70CBE727DF46480003CEC4 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		BC70CBE927DF4C5F0003CEC4 /* HTTPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPModel.swift; sourceTree = "<group>"; };
+		BC70CBF327DF71830003CEC4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BC70CBF527DF71F10003CEC4 /* AvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
 		D16CC7566D75C8D69C33F212 /* Pods-Task4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task4.release.xcconfig"; path = "Target Support Files/Pods-Task4/Pods-Task4.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +136,7 @@
 		BC70CBDB27DF3BF60003CEC4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC70CBF227DF71470003CEC4 /* Views */,
 				BC70CBDC27DF3C370003CEC4 /* Cells */,
 				BC69EBBB27C4FD07006D85DD /* MainViewController.swift */,
 				BC5F4AA727CBBD5400E82425 /* MapViewController.swift */,
@@ -167,6 +172,15 @@
 				BC70CBE527DF46160003CEC4 /* Map.swift */,
 			);
 			path = ATM;
+			sourceTree = "<group>";
+		};
+		BC70CBF227DF71470003CEC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BC70CBF327DF71830003CEC4 /* MapView.swift */,
+				BC70CBF527DF71F10003CEC4 /* AvailabilityView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +323,8 @@
 				BC69EBBA27C4FD07006D85DD /* SceneDelegate.swift in Sources */,
 				BC70CBEA27DF4C5F0003CEC4 /* HTTPModel.swift in Sources */,
 				BC70CBDF27DF44CB0003CEC4 /* ATMModel.swift in Sources */,
+				BC70CBF627DF71F10003CEC4 /* AvailabilityView.swift in Sources */,
+				BC70CBF427DF71830003CEC4 /* MapView.swift in Sources */,
 				BC70CBE827DF46480003CEC4 /* Time.swift in Sources */,
 				BC5F4AAA27CBBD8200E82425 /* NetworkManager.swift in Sources */,
 				BC70CBE227DF45480003CEC4 /* Service.swift in Sources */,

@@ -44,8 +44,25 @@ class Constants {
             }
         }
     }
-
-    class Location {
-        static let distanceSpan: Double = 500
+    
+    enum Colors {
+        static let appMainColor = UIColor(red: 10 / 255,
+                                          green: 189 / 255,
+                                          blue: 49 / 255,
+                                          alpha: 1)
+    }
+    
+    enum Fonts {
+        static let defaultFontSize: CGFloat = 14
+        static let headerFontSize: CGFloat = 16
+        static let cellSubviewsFont = UIFont.systemFont(ofSize: defaultFontSize, weight: .light)
+        static let headerFont = UIFont.systemFont(ofSize: headerFontSize, weight: .light)
+    }
+    
+    class Dimensions {
+        static let cellsSpacing: CGFloat = 10
+        static let defaultPadding: CGFloat = 5
+        static let cornerRadius: CGFloat = 7
+        static let headerHeight: CGFloat = 30
     }
 }
