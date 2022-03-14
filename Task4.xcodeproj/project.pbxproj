@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC5F4AA827CBBD5400E82425 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5F4AA727CBBD5400E82425 /* MapViewController.swift */; };
-		BC5F4AAA27CBBD8200E82425 /* ClientAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5F4AA927CBBD8200E82425 /* ClientAPI.swift */; };
+		BC5F4AAA27CBBD8200E82425 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5F4AA927CBBD8200E82425 /* NetworkManager.swift */; };
 		BC5F4AAC27CBC72F00E82425 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5F4AAB27CBC72F00E82425 /* ListViewController.swift */; };
 		BC5F4AAE27CBCE1200E82425 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5F4AAD27CBCE1200E82425 /* UIViewController + Ext.swift */; };
 		BC69EBB827C4FD07006D85DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EBB727C4FD07006D85DD /* AppDelegate.swift */; };
@@ -16,7 +16,13 @@
 		BC69EBBC27C4FD07006D85DD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EBBB27C4FD07006D85DD /* MainViewController.swift */; };
 		BC69EBC127C4FD09006D85DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC69EBC027C4FD09006D85DD /* Assets.xcassets */; };
 		BC69EBC427C4FD09006D85DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC69EBC227C4FD09006D85DD /* LaunchScreen.storyboard */; };
-		BC8E922127CACA41006B1B3C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BC8E922027CACA41006B1B3C /* .swiftlint.yml */; };
+		BC70CBD927DF3B110003CEC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBD827DF3B110003CEC4 /* Constants.swift */; };
+		BC70CBDF27DF44CB0003CEC4 /* ATMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBDE27DF44CB0003CEC4 /* ATMModel.swift */; };
+		BC70CBE227DF45480003CEC4 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE127DF45480003CEC4 /* Service.swift */; };
+		BC70CBE427DF455C0003CEC4 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE327DF455C0003CEC4 /* Address.swift */; };
+		BC70CBE627DF46160003CEC4 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE527DF46160003CEC4 /* Map.swift */; };
+		BC70CBE827DF46480003CEC4 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE727DF46480003CEC4 /* Time.swift */; };
+		BC70CBEA27DF4C5F0003CEC4 /* HTTPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE927DF4C5F0003CEC4 /* HTTPModel.swift */; };
 		E18108920768AA2DDA77B8FD /* Pods_Task4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E19019E5D0DB8FB342C934 /* Pods_Task4.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +30,7 @@
 		65E19019E5D0DB8FB342C934 /* Pods_Task4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Task4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA093AA9384F4B4514F05B6 /* Pods-Task4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task4.debug.xcconfig"; path = "Target Support Files/Pods-Task4/Pods-Task4.debug.xcconfig"; sourceTree = "<group>"; };
 		BC5F4AA727CBBD5400E82425 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		BC5F4AA927CBBD8200E82425 /* ClientAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientAPI.swift; sourceTree = "<group>"; };
+		BC5F4AA927CBBD8200E82425 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BC5F4AAB27CBC72F00E82425 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		BC5F4AAD27CBCE1200E82425 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
 		BC69EBB427C4FD07006D85DD /* Task4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Task4.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,7 +40,13 @@
 		BC69EBC027C4FD09006D85DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC69EBC327C4FD09006D85DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC69EBC527C4FD09006D85DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BC8E922027CACA41006B1B3C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		BC70CBD827DF3B110003CEC4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BC70CBDE27DF44CB0003CEC4 /* ATMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMModel.swift; sourceTree = "<group>"; };
+		BC70CBE127DF45480003CEC4 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		BC70CBE327DF455C0003CEC4 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		BC70CBE527DF46160003CEC4 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		BC70CBE727DF46480003CEC4 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		BC70CBE927DF4C5F0003CEC4 /* HTTPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPModel.swift; sourceTree = "<group>"; };
 		D16CC7566D75C8D69C33F212 /* Pods-Task4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task4.release.xcconfig"; path = "Target Support Files/Pods-Task4/Pods-Task4.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,7 +82,6 @@
 		BC69EBAB27C4FD06006D85DD = {
 			isa = PBXGroup;
 			children = (
-				BC8E922027CACA41006B1B3C /* .swiftlint.yml */,
 				BC69EBB627C4FD07006D85DD /* Task4 */,
 				BC69EBB527C4FD07006D85DD /* Products */,
 				458A7B5C9688074B2F4AB2A8 /* Pods */,
@@ -89,18 +100,73 @@
 		BC69EBB627C4FD07006D85DD /* Task4 */ = {
 			isa = PBXGroup;
 			children = (
+				BC70CBDB27DF3BF60003CEC4 /* Controllers */,
+				BC70CBDA27DF3BEB0003CEC4 /* Models */,
+				BC70CBD727DF3AEA0003CEC4 /* SupportFiles */,
+				BC69EBC527C4FD09006D85DD /* Info.plist */,
+			);
+			path = Task4;
+			sourceTree = "<group>";
+		};
+		BC70CBD727DF3AEA0003CEC4 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				BC70CBD827DF3B110003CEC4 /* Constants.swift */,
 				BC69EBB727C4FD07006D85DD /* AppDelegate.swift */,
 				BC69EBB927C4FD07006D85DD /* SceneDelegate.swift */,
+				BC69EBC027C4FD09006D85DD /* Assets.xcassets */,
+				BC69EBC227C4FD09006D85DD /* LaunchScreen.storyboard */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		BC70CBDA27DF3BEB0003CEC4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BC70CBE027DF45080003CEC4 /* ATM */,
+				BC70CBDD27DF44490003CEC4 /* API */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BC70CBDB27DF3BF60003CEC4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BC70CBDC27DF3C370003CEC4 /* Cells */,
 				BC69EBBB27C4FD07006D85DD /* MainViewController.swift */,
 				BC5F4AA727CBBD5400E82425 /* MapViewController.swift */,
 				BC5F4AAB27CBC72F00E82425 /* ListViewController.swift */,
 				BC5F4AAD27CBCE1200E82425 /* UIViewController + Ext.swift */,
-				BC5F4AA927CBBD8200E82425 /* ClientAPI.swift */,
-				BC69EBC027C4FD09006D85DD /* Assets.xcassets */,
-				BC69EBC227C4FD09006D85DD /* LaunchScreen.storyboard */,
-				BC69EBC527C4FD09006D85DD /* Info.plist */,
 			);
-			path = Task4;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BC70CBDC27DF3C370003CEC4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		BC70CBDD27DF44490003CEC4 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BC5F4AA927CBBD8200E82425 /* NetworkManager.swift */,
+				BC70CBE927DF4C5F0003CEC4 /* HTTPModel.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		BC70CBE027DF45080003CEC4 /* ATM */ = {
+			isa = PBXGroup;
+			children = (
+				BC70CBDE27DF44CB0003CEC4 /* ATMModel.swift */,
+				BC70CBE327DF455C0003CEC4 /* Address.swift */,
+				BC70CBE727DF46480003CEC4 /* Time.swift */,
+				BC70CBE127DF45480003CEC4 /* Service.swift */,
+				BC70CBE527DF46160003CEC4 /* Map.swift */,
+			);
+			path = ATM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +230,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC8E922127CACA41006B1B3C /* .swiftlint.yml in Resources */,
 				BC69EBC427C4FD09006D85DD /* LaunchScreen.storyboard in Resources */,
 				BC69EBC127C4FD09006D85DD /* Assets.xcassets in Resources */,
 			);
@@ -227,7 +292,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -241,8 +307,15 @@
 				BC5F4AAE27CBCE1200E82425 /* UIViewController + Ext.swift in Sources */,
 				BC5F4AAC27CBC72F00E82425 /* ListViewController.swift in Sources */,
 				BC69EBBA27C4FD07006D85DD /* SceneDelegate.swift in Sources */,
-				BC5F4AAA27CBBD8200E82425 /* ClientAPI.swift in Sources */,
+				BC70CBEA27DF4C5F0003CEC4 /* HTTPModel.swift in Sources */,
+				BC70CBDF27DF44CB0003CEC4 /* ATMModel.swift in Sources */,
+				BC70CBE827DF46480003CEC4 /* Time.swift in Sources */,
+				BC5F4AAA27CBBD8200E82425 /* NetworkManager.swift in Sources */,
+				BC70CBE227DF45480003CEC4 /* Service.swift in Sources */,
 				BC5F4AA827CBBD5400E82425 /* MapViewController.swift in Sources */,
+				BC70CBE427DF455C0003CEC4 /* Address.swift in Sources */,
+				BC70CBE627DF46160003CEC4 /* Map.swift in Sources */,
+				BC70CBD927DF3B110003CEC4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
