@@ -25,6 +25,8 @@
 		BC70CBEA27DF4C5F0003CEC4 /* HTTPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE927DF4C5F0003CEC4 /* HTTPModel.swift */; };
 		BC70CBF427DF71830003CEC4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF327DF71830003CEC4 /* MapView.swift */; };
 		BC70CBF627DF71F10003CEC4 /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF527DF71F10003CEC4 /* AvailabilityView.swift */; };
+		BC70CBF827DF87780003CEC4 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF727DF87780003CEC4 /* ListCollectionViewCell.swift */; };
+		BC70CBFA27DF887D0003CEC4 /* SectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF927DF887D0003CEC4 /* SectionReusableView.swift */; };
 		E18108920768AA2DDA77B8FD /* Pods_Task4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E19019E5D0DB8FB342C934 /* Pods_Task4.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 		BC70CBE927DF4C5F0003CEC4 /* HTTPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPModel.swift; sourceTree = "<group>"; };
 		BC70CBF327DF71830003CEC4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		BC70CBF527DF71F10003CEC4 /* AvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
+		BC70CBF727DF87780003CEC4 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
+		BC70CBF927DF887D0003CEC4 /* SectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionReusableView.swift; sourceTree = "<group>"; };
 		D16CC7566D75C8D69C33F212 /* Pods-Task4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task4.release.xcconfig"; path = "Target Support Files/Pods-Task4/Pods-Task4.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +153,7 @@
 		BC70CBDC27DF3C370003CEC4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BC70CBF727DF87780003CEC4 /* ListCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 			children = (
 				BC70CBF327DF71830003CEC4 /* MapView.swift */,
 				BC70CBF527DF71F10003CEC4 /* AvailabilityView.swift */,
+				BC70CBF927DF887D0003CEC4 /* SectionReusableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC69EBBC27C4FD07006D85DD /* MainViewController.swift in Sources */,
+				BC70CBFA27DF887D0003CEC4 /* SectionReusableView.swift in Sources */,
 				BC69EBB827C4FD07006D85DD /* AppDelegate.swift in Sources */,
 				BC5F4AAE27CBCE1200E82425 /* UIViewController + Ext.swift in Sources */,
 				BC5F4AAC27CBC72F00E82425 /* ListViewController.swift in Sources */,
@@ -328,6 +335,7 @@
 				BC70CBE827DF46480003CEC4 /* Time.swift in Sources */,
 				BC5F4AAA27CBBD8200E82425 /* NetworkManager.swift in Sources */,
 				BC70CBE227DF45480003CEC4 /* Service.swift in Sources */,
+				BC70CBF827DF87780003CEC4 /* ListCollectionViewCell.swift in Sources */,
 				BC5F4AA827CBBD5400E82425 /* MapViewController.swift in Sources */,
 				BC70CBE427DF455C0003CEC4 /* Address.swift in Sources */,
 				BC70CBE627DF46160003CEC4 /* Map.swift in Sources */,

@@ -66,6 +66,11 @@ class MainViewController: UIViewController {
             navigationController?.navigationBar.topItem?.title = "MAP ATMs"
     }
     
+    func forceMapCallout(for title: String) {
+        segmentedControl.selectedSegmentIndex = 0
+        mapViewController.selectAnnotation(with: title)
+    }
+    
     @objc func segmentAction(_ segmentedControl: UISegmentedControl) {
         switch (segmentedControl.selectedSegmentIndex) {
         case 0:

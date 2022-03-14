@@ -11,6 +11,7 @@ class Constants {
 
     class Strings {
         static let urlString = "https://belarusbank.by/open-banking/v1.0/atms"
+        static let availabilityButtonTitle = "График работы"
     }
 
     enum Days {
