@@ -35,7 +35,8 @@ class ListViewController: UIViewController {
         layout.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: Constants.Dimensions.headerHeight)
 
         let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.reuseIdentifier)
+        collectionView.register(ListCollectionViewCell.self,
+                                forCellWithReuseIdentifier: ListCollectionViewCell.reuseIdentifier)
         collectionView.register(SectionReusableView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: SectionReusableView.reuseId)

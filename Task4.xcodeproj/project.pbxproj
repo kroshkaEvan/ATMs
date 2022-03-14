@@ -108,6 +108,8 @@
 		BC69EBB627C4FD07006D85DD /* Task4 */ = {
 			isa = PBXGroup;
 			children = (
+				BC70CBDC27DF3C370003CEC4 /* Cells */,
+				BC70CBF227DF71470003CEC4 /* Views */,
 				BC70CBDB27DF3BF60003CEC4 /* Controllers */,
 				BC70CBDA27DF3BEB0003CEC4 /* Models */,
 				BC70CBD727DF3AEA0003CEC4 /* SupportFiles */,
@@ -140,8 +142,6 @@
 		BC70CBDB27DF3BF60003CEC4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BC70CBF227DF71470003CEC4 /* Views */,
-				BC70CBDC27DF3C370003CEC4 /* Cells */,
 				BC69EBBB27C4FD07006D85DD /* MainViewController.swift */,
 				BC5F4AA727CBBD5400E82425 /* MapViewController.swift */,
 				BC5F4AAB27CBC72F00E82425 /* ListViewController.swift */,
