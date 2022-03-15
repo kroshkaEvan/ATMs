@@ -18,16 +18,9 @@ final class MapAnnotation: NSObject, MKAnnotation {
 class MapAnnotationView: MKAnnotationView {
     var model: ATM?
     
-    private let boxInset = CGFloat(10)
-    private let interItemSpacing = CGFloat(10)
-    private let maxContentWidth = CGFloat(300)
-    private let contentInsets = UIEdgeInsets(top: 10,
-                                             left: 30,
-                                             bottom: 20,
-                                             right: 20)
     private let blurEffect = UIBlurEffect(style: .systemThickMaterial)
     
-    private lazy var backgroundMaterial: UIVisualEffectView = {
+    private lazy var visualView: UIVisualEffectView = {
         let view = UIVisualEffectView(effect: blurEffect)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -35,32 +28,29 @@ class MapAnnotationView: MKAnnotationView {
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [placeLabel, availabilityView])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .top
-        stackView.spacing = interItemSpacing
-        addSubview(stackView)
+        stackView.spacing = Constants.Dimensions.interItemSpacing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
     private lazy var placeLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
+        label.text = model?.address.addressLine
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.preferredMaxLayoutWidth = maxContentWidth
-        label.text = model?.address.addressLine
-        addSubview(label)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.preferredMaxLayoutWidth = Constants.Dimensions.maxContentWidth
         return label
     }()
     
     private lazy var availabilityView: AvailabilityView = {
         let days = self.model?.availability.standardAvailability.day
         let view = AvailabilityView(for: days)
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.isUserInteractionEnabled = false
-        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -77,49 +67,49 @@ class MapAnnotationView: MKAnnotationView {
         invalidateIntrinsicContentSize()
         let contentSize = intrinsicContentSize
         frame.size = intrinsicContentSize
-        centerOffset = CGPoint(x: contentSize.width / 2,
-                               y: contentSize.height / 2)
-        let shape = CAShapeLayer()
+        centerOffset = CGPoint(x: contentSize.width / 1.5,
+                               y: contentSize.height / 1.5)
+        let shapeLayer = CAShapeLayer()
         let path = CGMutablePath()
-        let pointShape = UIBezierPath()
-        pointShape.move(to: CGPoint(x: boxInset,
+        let pointBezierPath = UIBezierPath()
+        pointBezierPath.move(to: CGPoint(x: Constants.Dimensions.pointTableInSet,
                                     y: 0))
-        pointShape.addLine(to: CGPoint.zero)
-        pointShape.addLine(to: CGPoint(x: boxInset,
-                                       y: boxInset))
-        path.addPath(pointShape.cgPath)
-        let box = CGRect(x: boxInset, y: 0, width: self.frame.size.width - boxInset, height: self.frame.size.height)
+        pointBezierPath.addLine(to: CGPoint.zero)
+        pointBezierPath.addLine(to: CGPoint(x: Constants.Dimensions.pointTableInSet,
+                                       y: Constants.Dimensions.pointTableInSet))
+        let box = CGRect(x: Constants.Dimensions.pointTableInSet,
+                         y: 0,
+                         width: self.frame.size.width - Constants.Dimensions.pointTableInSet,
+                         height: self.frame.size.height)
         let roundedRect = UIBezierPath(roundedRect: box,
                                        byRoundingCorners: [.topRight, .bottomLeft, .bottomRight],
                                        cornerRadii: CGSize(width: 5, height: 5))
         path.addPath(roundedRect.cgPath)
-        
-        shape.path = path
-        backgroundMaterial.layer.mask = shape
+        path.addPath(pointBezierPath.cgPath)
+        shapeLayer.path = path
+        visualView.layer.mask = shapeLayer
     }
     
     override var intrinsicContentSize: CGSize {
         var size = stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        size.width += contentInsets.left + contentInsets.right
-        size.height += contentInsets.top + contentInsets.bottom
+        let sizeContent = Constants.Dimensions.sizeContent
+        size.width += sizeContent.left + sizeContent.right
+        size.height += sizeContent.top + sizeContent.bottom
         return size
     }
     
-    private func configure() {
-        backgroundColor = UIColor.clear
-        addSubview(backgroundMaterial)
-        backgroundMaterial.contentView.addSubview(stackView)
-        activateConstraints()
-        
-    }
-    
-    private func activateConstraints() {
-        backgroundMaterial.snp.makeConstraints { make in
+    private func setuoVCs() {
+        backgroundColor = UIColor.white
+        addSubview(visualView)
+        addSubview(stackView)
+        addSubview(placeLabel)
+        addSubview(availabilityView)
+        visualView.contentView.addSubview(stackView)
+        visualView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
         stackView.snp.makeConstraints { make in
-            make.edges.equalTo(backgroundMaterial)
+            make.edges.equalTo(visualView)
         }
     }
 }

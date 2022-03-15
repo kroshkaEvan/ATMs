@@ -32,14 +32,14 @@ class ListViewController: UIViewController {
         layout.minimumLineSpacing = Constants.Dimensions.cellsSpacing
         layout.minimumInteritemSpacing = Constants.Dimensions.cellsSpacing
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
-        layout.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: Constants.Dimensions.headerHeight)
+        layout.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: Constants.Dimensions.sectionHeight)
 
         let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.register(ListCollectionViewCell.self,
                                 forCellWithReuseIdentifier: ListCollectionViewCell.reuseIdentifier)
         collectionView.register(SectionReusableView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: SectionReusableView.reuseId)
+                                withReuseIdentifier: SectionReusableView.identifier)
         collectionView.backgroundColor = Constants.Colors.appMainColor
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -78,6 +78,8 @@ class ListViewController: UIViewController {
             } else if !townNames.contains(atm.address.townName), atm.address.townName.isEmpty {
                 townNames.append(atm.address.streetName)
             }
+            modelForWork.append(element: atm, toValueOfKey: atm.address.townName)
+            modelForWork.append(element: atm, toValueOfKey: atm.address.streetName)
         })
         townNames = townNames.sorted { $0 < $1 }
         modelForWork.forEach({ key, value in
@@ -109,9 +111,9 @@ extension ListViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                     withReuseIdentifier: SectionReusableView.reuseId, for: indexPath)
+                                                                     withReuseIdentifier: SectionReusableView.identifier, for: indexPath)
         if  let sectionHeader = header as? SectionReusableView {
-            sectionHeader.headerLabel.text = townNames[indexPath.section]
+            sectionHeader.sectionLabel.text = townNames[indexPath.section]
             return sectionHeader
         }
         return UICollectionReusableView()

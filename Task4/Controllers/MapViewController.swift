@@ -11,8 +11,8 @@ import MapKit
 
 class MapViewController: UIViewController {
     private var locationManager: CLLocationManager?
-    private let distanceSpan = 100
-    private var currentLocationStr = "Текущее местоположение"
+    private let distanceSpan = Constants.Location.distance
+    private var currentLocationStr = Constants.Strings.currentLocation
 
     var model: [ATM]?
 
@@ -86,8 +86,8 @@ class MapViewController: UIViewController {
         geoCoder.reverseGeocodeLocation(location) { placemarks, _ -> Void in
             if let mPlacemark = placemarks {
                 if let dict = mPlacemark[0].addressDictionary as? [String: Any] {
-                    if let name = dict["Name"] as? String {
-                        if let city = dict["City"] as? String {
+                    if let name = dict[Constants.Strings.nameDictKey] as? String {
+                        if let city = dict[Constants.Strings.cityDictKey] as? String {
                             self.currentLocationStr = name + ", " + city
                         }
                     }
@@ -165,9 +165,9 @@ extension MapViewController: MKMapViewDelegate {
 
         let cashInLabel = UILabel()
         if isCashInavailable {
-            cashInLabel.text = "Cash In: Да"
+            cashInLabel.text = Constants.Strings.cashInYes
         } else {
-            cashInLabel.text = "Cash In: Нет"
+            cashInLabel.text = Constants.Strings.cashInNo
         }
         cashInLabel.font = Constants.Fonts.cellSubviewsFont
 

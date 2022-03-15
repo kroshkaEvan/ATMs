@@ -62,7 +62,7 @@ final class ListCollectionViewCell: UICollectionViewCell {
     }()
 
     private let padding = Constants.Dimensions.defaultPadding
-    private let cornerRadius: CGFloat = Constants.Dimensions.cornerRadius
+    private let cornerRadius: CGFloat = Constants.Dimensions.defaultCornerRadius
 
     override func prepareForReuse() {
         super.prepareForReuse()
