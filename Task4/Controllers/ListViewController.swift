@@ -12,17 +12,17 @@ class ListViewController: UIViewController {
     private let numberOfItemsInSection = 3
     private var townNames = [String]()
     private var modelForWork = [String: [ATM]]()
-
+    
     var model: [ATM]?
-
-    lazy var ATMCollectionView: UICollectionView = {
+    
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-
+        
         layout.sectionInset = UIEdgeInsets(top: Constants.Dimensions.cellsSpacing / 2,
                                            left: Constants.Dimensions.cellsSpacing,
                                            bottom: Constants.Dimensions.cellsSpacing / 2,
                                            right: Constants.Dimensions.cellsSpacing)
-
+        
         let cellWidth = (view.bounds.width
                          - layout.sectionInset.left
                          - layout.sectionInset.right
@@ -33,41 +33,41 @@ class ListViewController: UIViewController {
         layout.minimumInteritemSpacing = Constants.Dimensions.cellsSpacing
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         layout.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: Constants.Dimensions.sectionHeight)
-
-        let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        
+        let collectionView = UICollectionView(frame: self.view.frame,
+                                              collectionViewLayout: layout)
         collectionView.register(ListCollectionViewCell.self,
                                 forCellWithReuseIdentifier: ListCollectionViewCell.reuseIdentifier)
         collectionView.register(SectionReusableView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: SectionReusableView.identifier)
         collectionView.backgroundColor = Constants.Colors.appMainColor
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(collectionView)
         return collectionView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewController()
+        setupVC()
     }
-
-    private func configureViewController() {
+    
+    private func setupVC() {
+        view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
         activateConstraints()
         prepareModelForCollectionView()
     }
-
+    
     private func activateConstraints() {
-        ATMCollectionView.snp.makeConstraints { make in
+        collectionView.snp.makeConstraints { make in
             make.leading.top.equalToSuperview()
             make.leading.bottom.equalToSuperview()
             make.leading.leading.equalToSuperview()
             make.leading.trailing.equalToSuperview()
         }
     }
-
+    
     func prepareModelForCollectionView() {
         modelForWork.removeAll()
         townNames.removeAll()
@@ -86,7 +86,7 @@ class ListViewController: UIViewController {
             modelForWork.updateValue(value.sorted { $0.atmID < $1.atmID }, forKey: key)
         })
     }
-
+    
 }
 
 extension ListViewController: UICollectionViewDataSource {
@@ -94,31 +94,32 @@ extension ListViewController: UICollectionViewDataSource {
         let key = townNames[section]
         return modelForWork[key]?.count ?? 0
     }
-
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return townNames.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.reuseIdentifier, for: indexPath)
-        if let atmCell = cell as? ListCollectionViewCell {
+        if let cell = cell as? ListCollectionViewCell {
             let key = townNames[indexPath.section]
-            atmCell.model = modelForWork[key]?[indexPath.row]
-            atmCell.configure()
+            cell.model = modelForWork[key]?[indexPath.row]
+            cell.setupCell()
         }
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                     withReuseIdentifier: SectionReusableView.identifier, for: indexPath)
-        if  let sectionHeader = header as? SectionReusableView {
+        let section = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                      withReuseIdentifier: SectionReusableView.identifier,
+                                                                      for: indexPath)
+        if  let sectionHeader = section as? SectionReusableView {
             sectionHeader.sectionLabel.text = townNames[indexPath.section]
             return sectionHeader
         }
         return UICollectionReusableView()
     }
-
+    
 }
 
 extension ListViewController: UICollectionViewDelegate {

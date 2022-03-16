@@ -9,14 +9,14 @@ import UIKit
 import MapKit
 import SnapKit
 
-final class MapAnnotation: NSObject, MKAnnotation {
+class MapAnnotation: NSObject, MKAnnotation {
     var coordinate = CLLocationCoordinate2D()
     var title: String?
     var subtitle: String?
 }
 
 class MapAnnotationView: MKAnnotationView {
-    var model: ATM?
+    var atmModel: ATM?
     
     private let blurEffect = UIBlurEffect(style: .systemThickMaterial)
     
@@ -37,7 +37,7 @@ class MapAnnotationView: MKAnnotationView {
     
     private lazy var placeLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = model?.address.addressLine
+        label.text = atmModel?.address.addressLine
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
@@ -47,7 +47,7 @@ class MapAnnotationView: MKAnnotationView {
     }()
     
     private lazy var availabilityView: AvailabilityView = {
-        let days = self.model?.availability.standardAvailability.day
+        let days = self.atmModel?.availability.standardAvailability.day
         let view = AvailabilityView(for: days)
         view.isUserInteractionEnabled = false
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -98,7 +98,7 @@ class MapAnnotationView: MKAnnotationView {
         return size
     }
     
-    private func setuoVCs() {
+    private func setuoView() {
         backgroundColor = UIColor.white
         addSubview(visualView)
         addSubview(stackView)

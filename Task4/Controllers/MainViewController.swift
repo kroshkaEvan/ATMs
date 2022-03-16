@@ -43,6 +43,12 @@ class MainViewController: UIViewController {
         self.set(view: contentView, viewController)
         return viewController
     }()
+    
+    private lazy var loadingView: LoadingView = {
+       let loading =  LoadingView()
+        loading.layer.zPosition = 999
+        return loading
+    }()
 
     private lazy var updateButton: UIBarButtonItem = { UIBarButtonItem(barButtonSystemItem: .refresh,
                                                                        target: self,
@@ -66,7 +72,7 @@ class MainViewController: UIViewController {
 
     private func fetchATMsData() {
         checkConnectionNetwork()
-
+        showLodingView()
         self.model = nil
         listViewController.model = nil
         mapViewController.model = nil
@@ -75,13 +81,39 @@ class MainViewController: UIViewController {
             self.listViewController.model = model?.data.atm
             self.mapViewController.model = model?.data.atm
             DispatchQueue.main.async {
-                self.mapViewController.configure()
+                self.mapViewController.configure{ self.hideLoading() }
                 self.listViewController.prepareModelForCollectionView()
-                self.listViewController.ATMCollectionView.reloadData()
+                self.listViewController.collectionView.reloadData()
                 self.updateButton.isEnabled = true
             }
         }
 
+    }
+    
+//    private func showAlert() {
+//        let alert = UIAlertController(title: Constants.Strings.internetAlertTitle,
+//                                      message: Constants.Strings.internetAlertMessage,
+//                                      preferredStyle: .alert)
+//        let action = UIAlertAction(title: Constants.Strings.internetAlertButtonTitle,
+//                                   style: .default,
+//                                   handler: { [weak self] _ in
+//            self?.updateButton.isEnabled = true
+//            self?.hideLoading()
+//        })
+//        alert.addAction(action)
+//        present(alert, animated: true, completion: nil)
+//    }
+    
+    private func showLodingView() {
+        contentView.addSubview(loadingView)
+        loadingView.frame = contentView.bounds
+        loadingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    private func hideLoading() {
+        loadingView.removeFromSuperview()
     }
 
     private func checkConnectionNetwork() {

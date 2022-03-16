@@ -8,43 +8,35 @@
 import SnapKit
 import UIKit
 
-final class SectionReusableView: UICollectionReusableView {
-
-    static let identifier = "Section"
-
-     lazy var sectionLabel: UILabel = {
+class SectionReusableView: UICollectionReusableView {
+    static let identifier = Constants.Strings.section
+    
+    lazy var sectionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Header"
+        label.text = Constants.Strings.section
         label.textColor = .white
-        label.font = Constants.Fonts.headerFont
+        label.font = Constants.Fonts.sectionFont
         return label
     }()
-
-    private let padding = Constants.Dimensions.defaultPadding
-    private let cornerRadius: CGFloat = Constants.Dimensions.defaultCornerRadius
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configure()
+        self.setupView()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
-    private func configure() {
+    
+    private func setupView() {
         self.addSubview(sectionLabel)
         self.backgroundColor = .white.withAlphaComponent(0.1)
-        self.layer.cornerRadius = cornerRadius
-        activateConstraints()
-    }
-
-    private func activateConstraints() {
+        self.layer.cornerRadius = Constants.Dimensions.defaultCornerRadius
         sectionLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.snp.top).offset(padding)
-            make.bottom.equalTo(self.snp.bottom).offset(-padding)
-            make.leading.equalTo(self.snp.leading).offset(padding)
-
+            make.top.equalTo(self.snp.top).offset(Constants.Dimensions.defaultPadding)
+            make.bottom.equalTo(self.snp.bottom).offset(-Constants.Dimensions.defaultPadding)
+            make.leading.equalTo(self.snp.leading).offset(Constants.Dimensions.defaultPadding)
+            
         }
     }
 }

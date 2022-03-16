@@ -13,6 +13,7 @@ extension Constants {
         static let availabilityButtonTitle = "Timetable"
         static let map = "Map"
         static let list = "List"
+        static let section = "Section"
         static let searchBarPlaceholder = "Enter a city"
         static let routeButtonText =  "Build Route"
         static let currentLocation =  "Current location"
@@ -38,18 +39,18 @@ extension Constants {
         case sunday
         case weekend
 
-        var shortValue: String {
+        var shortName: String {
             switch self {
             case .monday:
-                return "Mo"
+                return "Mon"
             case .tuesday:
-                return "Tu"
+                return "Tue"
             case .wednesday:
-                return "We"
+                return "Wen"
             case .thursday:
-                return "Th"
+                return "Thu"
             case .friday:
-                return "Fr"
+                return "Fri"
             case .saturday:
                 return "Sat"
             case .sunday:

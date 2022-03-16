@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class ListCollectionViewCell: UICollectionViewCell {
+class ListCollectionViewCell: UICollectionViewCell {
 
     static let reuseIdentifier = "ListCell"
     var model: ATM?
@@ -34,7 +34,6 @@ final class ListCollectionViewCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setContentHuggingPriority(.defaultHigh, for: .vertical)
         button.setContentCompressionResistancePriority(.required, for: .vertical)
-        button.addTarget(self, action: #selector(didPressAvailabilityButton), for: .touchUpInside)
         return button
     }()
 
@@ -56,39 +55,34 @@ final class ListCollectionViewCell: UICollectionViewCell {
         stack.distribution = .fill
         stack.contentScaleFactor = .greatestFiniteMagnitude
         stack.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(stack)
-        [addressLabel, availabilityButton, currencyLabel].forEach { stack.addArrangedSubview($0) }
         return stack
     }()
-
-    private let padding = Constants.Dimensions.defaultPadding
-    private let cornerRadius: CGFloat = Constants.Dimensions.defaultCornerRadius
 
     override func prepareForReuse() {
         super.prepareForReuse()
         model = nil
     }
 
-    func configure() {
+    func setupCell() {
+        availabilityButton.addTarget(self,
+                         action: #selector(didTapButton),
+                         for: .touchUpInside)
+        addSubview(contentStackView)
+        [addressLabel, availabilityButton, currencyLabel].forEach { contentStackView.addArrangedSubview($0) }
         self.backgroundColor = .white
-        self.layer.cornerRadius = cornerRadius
-        activateConstraints()
-
-        guard let atm = model else { return }
-        addressLabel.text = atm.address.addressLine
-        currencyLabel.text = atm.currency.rawValue
-    }
-
-    private func activateConstraints() {
+        self.layer.cornerRadius = Constants.Dimensions.defaultCornerRadius
         contentStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(padding)
-            make.leading.equalToSuperview().offset(padding)
-            make.trailing.equalToSuperview().offset(-padding)
-            make.bottom.equalToSuperview().offset(-padding)
+            make.top.equalToSuperview().offset(Constants.Dimensions.defaultPadding)
+            make.leading.equalToSuperview().offset(Constants.Dimensions.defaultPadding)
+            make.trailing.equalToSuperview().offset(-Constants.Dimensions.defaultPadding)
+            make.bottom.equalToSuperview().offset(-Constants.Dimensions.defaultPadding)
         }
+        guard let atmModel = model else { return }
+        addressLabel.text = atmModel.address.addressLine
+        currencyLabel.text = atmModel.currency.rawValue
     }
 
-    @objc private func didPressAvailabilityButton() {
+    @objc private func didTapButton() {
         guard let model = model else { return }
         let availabilityView = AvailabilityView(for: model.availability.standardAvailability.day)
         availabilityView.frame = self.bounds

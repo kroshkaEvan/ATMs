@@ -10,15 +10,17 @@ import UIKit
 class Constants {
     class Fonts {
         static let defaultFontSize: CGFloat = 14
-        static let headerFontSize: CGFloat = 16
-        static let cellSubviewsFont = UIFont.systemFont(ofSize: defaultFontSize, weight: .light)
-        static let headerFont = UIFont.systemFont(ofSize: headerFontSize, weight: .light)
+        static let sectionFontSize: CGFloat = 16
+        static let sectionFont = UIFont.systemFont(ofSize: sectionFontSize,
+                                                   weight: .light)
+        static let cellSubviewsFont = UIFont.systemFont(ofSize: defaultFontSize,
+                                                        weight: .light)
     }
     
     class Colors {
-        static let appMainColor = UIColor(red: 58 / 255,
-                                          green: 124 / 255,
-                                          blue: 80 / 255,
+        static let appMainColor = UIColor(red: 232 / 255,
+                                          green: 97 / 255,
+                                          blue: 94 / 255,
                                           alpha: 1)
     }
 
