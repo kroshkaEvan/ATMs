@@ -18,9 +18,9 @@ class Constants {
     }
     
     class Colors {
-        static let appMainColor = UIColor(red: 232 / 255,
-                                          green: 97 / 255,
-                                          blue: 94 / 255,
+        static let appMainColor = UIColor(red: 186 / 255,
+                                          green: 104 / 255,
+                                          blue: 106 / 255,
                                           alpha: 1)
     }
 
@@ -31,7 +31,7 @@ class Constants {
         static let sectionHeight: CGFloat = 30
         static let pointTableInSet = CGFloat(10)
         static let interItemSpacing = CGFloat(10)
-        static let maxContentWidth = CGFloat(300)
+        static let maxLayoutWidth = CGFloat(300)
         static let sizeContent = UIEdgeInsets(top: 10,
                                                 left: 30,
                                                 bottom: 20,

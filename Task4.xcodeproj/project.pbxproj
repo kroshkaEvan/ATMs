@@ -27,6 +27,7 @@
 		BC70CBF627DF71F10003CEC4 /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF527DF71F10003CEC4 /* AvailabilityView.swift */; };
 		BC70CBF827DF87780003CEC4 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF727DF87780003CEC4 /* ListCollectionViewCell.swift */; };
 		BC70CBFA27DF887D0003CEC4 /* SectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF927DF887D0003CEC4 /* SectionReusableView.swift */; };
+		BCABC50127E22C60005F82B7 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCABC50027E22C60005F82B7 /* CurrencyViewController.swift */; };
 		BCED481127E147380095C595 /* Dictionary + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED481027E147380095C595 /* Dictionary + Ext.swift */; };
 		BCED481327E148E30095C595 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED481227E148E30095C595 /* Strings.swift */; };
 		BCED481527E1E7260095C595 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED481427E1E7260095C595 /* LoadingView.swift */; };
@@ -58,6 +59,7 @@
 		BC70CBF527DF71F10003CEC4 /* AvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
 		BC70CBF727DF87780003CEC4 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		BC70CBF927DF887D0003CEC4 /* SectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionReusableView.swift; sourceTree = "<group>"; };
+		BCABC50027E22C60005F82B7 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		BCED481027E147380095C595 /* Dictionary + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary + Ext.swift"; sourceTree = "<group>"; };
 		BCED481227E148E30095C595 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		BCED481427E1E7260095C595 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		BC70CBDB27DF3BF60003CEC4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BCABC50027E22C60005F82B7 /* CurrencyViewController.swift */,
 				BC69EBBB27C4FD07006D85DD /* MainViewController.swift */,
 				BC5F4AA727CBBD5400E82425 /* MapViewController.swift */,
 				BC5F4AAB27CBC72F00E82425 /* ListViewController.swift */,
@@ -366,6 +369,7 @@
 				BCED481527E1E7260095C595 /* LoadingView.swift in Sources */,
 				BC5F4AA827CBBD5400E82425 /* MapViewController.swift in Sources */,
 				BC70CBE427DF455C0003CEC4 /* Address.swift in Sources */,
+				BCABC50127E22C60005F82B7 /* CurrencyViewController.swift in Sources */,
 				BC70CBE627DF46160003CEC4 /* MapLocationManager.swift in Sources */,
 				BC70CBD927DF3B110003CEC4 /* Constants.swift in Sources */,
 			);

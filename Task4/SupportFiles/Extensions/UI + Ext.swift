@@ -26,11 +26,11 @@ extension UIViewController {
 
 extension UIButton {
     func loadingAnimation() {
-        let pulse = CASpringAnimation(keyPath: "transform.scale")
-        pulse.fromValue = 0.9
-        pulse.toValue = 1.0
-        pulse.duration = 0.3
-        layer.add(pulse, forKey: nil)
+        let animation = CASpringAnimation(keyPath: "transform.scale")
+        animation.fromValue = 0.9
+        animation.toValue = 1.0
+        animation.duration = 0.2
+        layer.add(animation, forKey: nil)
     }
 }
 
@@ -57,8 +57,34 @@ extension UIStackView {
         spacing = 2
         distribution = .fillEqually
         setContentHuggingPriority(.defaultHigh,
-                                        for: .vertical)
+                                  for: .vertical)
         setContentHuggingPriority(.defaultHigh,
-                                        for: .horizontal)
+                                  for: .horizontal)
+    }
+}
+
+extension UIView {
+    var width: CGFloat{
+        return self.frame.size.width
+    }
+    
+    var height: CGFloat{
+        return self.frame.size.height
+    }
+    
+    var top: CGFloat{
+        return self.frame.origin.y
+    }
+    
+    var bottom: CGFloat{
+        return self.frame.size.height + self.frame.origin.y
+    }
+    
+    var left: CGFloat{
+        return self.frame.origin.x
+    }
+    
+    var right: CGFloat{
+        return self.frame.size.width + self.frame.origin.x
     }
 }

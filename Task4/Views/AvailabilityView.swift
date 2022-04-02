@@ -113,7 +113,6 @@ class AvailabilityView: UIView {
         stack.axis = .horizontal
         stack.spacing = 2
         stack.distribution = .equalCentering
-        [shortNameStackView, dynamicStackView].forEach { stack.addArrangedSubview($0) }
         return stack
     }()
     
@@ -129,10 +128,11 @@ class AvailabilityView: UIView {
     
     private func setupView() {
         addSubview(mainStackview)
+        [shortNameStackView, dynamicStackView].forEach { mainStackview.addArrangedSubview($0) }
         let gesture = UITapGestureRecognizer(target: self,
                                              action: #selector(didTapClose(_:)))
         addGestureRecognizer(gesture)
-        backgroundColor = .white.withAlphaComponent(0.8)
+        backgroundColor = .white
         configureLabels()
         mainStackview.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top).offset(Constants.Dimensions.defaultPadding)

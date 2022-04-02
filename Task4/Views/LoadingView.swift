@@ -17,24 +17,24 @@ class LoadingView: UIView {
         indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
     }()
-
+    
     private lazy var blurEffectView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.alpha = 0.7
+        blurEffectView.alpha = 0.5
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
         return blurEffectView
     }()
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-
+    
     init() {
         super.init(frame: .zero)
         setupView()
     }
-
+    
     private func setupView() {
         self.addSubview(blurEffectView)
         self.addSubview(loadingActivityIndicator)

@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     private let networkManager = NetworkManager()
     private var model: ATMModel?
     private var monitor = NWPathMonitor()
-
+    
     private lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl()
         segmentedControl.backgroundColor = .lightGray
@@ -26,18 +26,18 @@ class MainViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = 2
         return segmentedControl
     }()
-
+    
     private lazy var contentView: UIView = {
-        let container = UIView()
-        return container
+        let contentView = UIView()
+        return contentView
     }()
-
+    
     private lazy var mapViewController: MapViewController = {
         var viewController = MapViewController()
         self.set(view: contentView, viewController)
         return viewController
     }()
-
+    
     private lazy var listViewController: ListViewController = {
         var viewController = ListViewController()
         self.set(view: contentView, viewController)
@@ -45,31 +45,31 @@ class MainViewController: UIViewController {
     }()
     
     private lazy var loadingView: LoadingView = {
-       let loading =  LoadingView()
+        let loading =  LoadingView()
         loading.layer.zPosition = 999
         return loading
     }()
-
+    
     private lazy var updateButton: UIBarButtonItem = { UIBarButtonItem(barButtonSystemItem: .refresh,
                                                                        target: self,
-                                                                       action: #selector(updateModel)) }()
-
+                                                                       action: #selector(updateModel)) } ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         segmentedControl.addTarget(self,
                                    action: #selector(segmentAction(_: )),
                                    for: .valueChanged)
         fetchATMsData()
-        setupVCs()
+        setupVC()
         updateView()
     }
-
+    
     func forceMapCallout(for title: String) {
         segmentedControl.selectedSegmentIndex = 0
         updateView()
         mapViewController.selectAnnotation(with: title)
     }
-
+    
     private func fetchATMsData() {
         checkConnectionNetwork()
         showLodingView()
@@ -81,28 +81,27 @@ class MainViewController: UIViewController {
             self.listViewController.model = model?.data.atm
             self.mapViewController.model = model?.data.atm
             DispatchQueue.main.async {
-                self.mapViewController.configure{ self.hideLoading() }
+                self.mapViewController.setupView{ self.hideLoading() }
                 self.listViewController.prepareModelForCollectionView()
                 self.listViewController.collectionView.reloadData()
                 self.updateButton.isEnabled = true
             }
         }
-
     }
     
-//    private func showAlert() {
-//        let alert = UIAlertController(title: Constants.Strings.internetAlertTitle,
-//                                      message: Constants.Strings.internetAlertMessage,
-//                                      preferredStyle: .alert)
-//        let action = UIAlertAction(title: Constants.Strings.internetAlertButtonTitle,
-//                                   style: .default,
-//                                   handler: { [weak self] _ in
-//            self?.updateButton.isEnabled = true
-//            self?.hideLoading()
-//        })
-//        alert.addAction(action)
-//        present(alert, animated: true, completion: nil)
-//    }
+    private func showAlert() {
+        let alert = UIAlertController(title: Constants.Strings.internetAlertTitle,
+                                      message: Constants.Strings.internetAlertMessage,
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: Constants.Strings.internetAlertButtonTitle,
+                                   style: .default,
+                                   handler: { [weak self] _ in
+            self?.updateButton.isEnabled = true
+            self?.hideLoading()
+        })
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
     
     private func showLodingView() {
         contentView.addSubview(loadingView)
@@ -115,19 +114,19 @@ class MainViewController: UIViewController {
     private func hideLoading() {
         loadingView.removeFromSuperview()
     }
-
+    
     private func checkConnectionNetwork() {
         monitor.pathUpdateHandler = { path in
-           if path.status == .satisfied {
-              print("Connected")
-           } else {
-              print("Disconnected")
-           }
-           print(path.isExpensive)
+            if path.status == .satisfied {
+                print("Connected")
+            } else {
+                print("Disconnected")
+            }
+            print(path.isExpensive)
         }
     }
-
-    private func setupVCs() {
+    
+    private func setupVC() {
         view.addSubview(segmentedControl)
         view.addSubview(contentView)
         view.backgroundColor = .gray
@@ -149,7 +148,7 @@ class MainViewController: UIViewController {
     private func setDefaultSegment() {
         self.changeVCs(view: contentView, mapViewController, listViewController)
     }
-
+    
     private func updateView() {
         let selectedSegment = segmentedControl.selectedSegmentIndex
         switch selectedSegment {
@@ -163,11 +162,11 @@ class MainViewController: UIViewController {
             break
         }
     }
-
+    
     @objc func segmentAction(_ sender: UISegmentedControl) {
         updateView()
     }
-
+    
     @objc func updateModel() {
         updateButton.isEnabled = false
         fetchATMsData()

@@ -10,13 +10,11 @@ import SnapKit
 import MapKit
 
 class MapViewController: UIViewController {
-    private var locationManager = LocationManager.shared
-    private let distanceSpan = Constants.Location.distance
     private var currentLocationStr = Constants.Strings.currentLocation
     private var selectedATMCoordinates: CLLocationCoordinate2D?
     var model: [ATM]?
     
-    lazy var mapView: MKMapView = {
+    private lazy var mapView: MKMapView = {
         let mapView = MKMapView()
         mapView.delegate = self
         mapView.register(MKMarkerAnnotationView.self,
@@ -34,28 +32,26 @@ class MapViewController: UIViewController {
                                                               trailing: Constants.Dimensions.defaultPadding * 4)
         button.configuration = configuration
         button.layer.cornerRadius = Constants.Dimensions.defaultCornerRadius
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.white, for: .highlighted)
         button.setTitle(Constants.Strings.routeButtonText, for: .normal)
         button.titleLabel?.font = Constants.Fonts.sectionFont
         button.backgroundColor = Constants.Colors.appMainColor
+        button.setTitleColor(.white, for: .normal)
         button.isEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapRouteButton), for: .touchUpInside)
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure(completion: nil)
+        setupView(completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        locationManager.startUpdatingLocation()
+        LocationManager.shared.startUpdatingLocation()
     }
     
-    func configure(completion: (() -> Void)?) {
+    func setupView(completion: (() -> Void)?) {
         routeButton.addTarget(self,
                               action: #selector(didTapRouteButton),
                               for: .touchUpInside)
@@ -78,7 +74,7 @@ class MapViewController: UIViewController {
     }
     
     private func setupLocationManager() {
-        locationManager.setDelegate(self)
+        LocationManager.shared.setDelegate(self)
     }
     
     private func addAnnotations(completion: (() -> Void)?) {
@@ -100,8 +96,8 @@ class MapViewController: UIViewController {
         let location = CLLocation(latitude: lattitude,
                                   longitude: longitude)
         geoCoder.reverseGeocodeLocation(location) { [weak self] placemarks, _ -> Void in
-            if let mPlacemark = placemarks,
-               let dict = mPlacemark[0].addressDictionary as? [String: Any],
+            if let placemarksArray = placemarks,
+               let dict = placemarksArray[0].addressDictionary as? [String: Any],
                let name = dict[Constants.Strings.nameDictKey] as? String ,
                let city = dict[Constants.Strings.cityDictKey] as? String {
                 self?.currentLocationStr = name + ", " + city
@@ -163,7 +159,6 @@ extension MapViewController: MKMapViewDelegate {
             
             markerAnnotationView.detailCalloutAccessoryView = setupMarkerDetails(for: selectedATM)
         }
-        
         return view
     }
     
@@ -186,9 +181,9 @@ extension MapViewController: MKMapViewDelegate {
         cashInLabel.font = Constants.Fonts.cellSubviewsFont
         
         let currencyLabel = UILabel()
-        currencyLabel.text = currency.rawValue
+        currencyLabel.text = "        \(Constants.Strings.currency) \(currency.rawValue)"
         currencyLabel.font = Constants.Fonts.cellSubviewsFont
-
+        
         let detailsStack = UIStackView()
         [availabilityView, cashInLabel, currencyLabel].forEach({ detailsStack.addArrangedSubview($0) })
         detailsStack.axis = .vertical

@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class ListViewController: UIViewController {
-    private let numberOfItemsInSection = 3
     private var townNames = [String]()
     private var modelForWork = [String: [ATM]]()
     
@@ -17,12 +16,11 @@ class ListViewController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        
         layout.sectionInset = UIEdgeInsets(top: Constants.Dimensions.cellsSpacing / 2,
                                            left: Constants.Dimensions.cellsSpacing,
                                            bottom: Constants.Dimensions.cellsSpacing / 2,
                                            right: Constants.Dimensions.cellsSpacing)
-        
+        let numberOfItemsInSection = 2
         let cellWidth = (view.bounds.width
                          - layout.sectionInset.left
                          - layout.sectionInset.right
@@ -32,8 +30,8 @@ class ListViewController: UIViewController {
         layout.minimumLineSpacing = Constants.Dimensions.cellsSpacing
         layout.minimumInteritemSpacing = Constants.Dimensions.cellsSpacing
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
-        layout.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: Constants.Dimensions.sectionHeight)
-        
+        layout.headerReferenceSize = CGSize(width: self.view.width,
+                                            height: Constants.Dimensions.sectionHeight)
         let collectionView = UICollectionView(frame: self.view.frame,
                                               collectionViewLayout: layout)
         collectionView.register(ListCollectionViewCell.self,
@@ -43,7 +41,18 @@ class ListViewController: UIViewController {
                                 withReuseIdentifier: SectionReusableView.identifier)
         collectionView.backgroundColor = Constants.Colors.appMainColor
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.keyboardDismissMode = .onDrag
         return collectionView
+    }()
+    
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = Constants.Strings.searchBarPlaceholder
+        searchBar.showsCancelButton = true
+        searchBar.backgroundColor = .lightGray
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = true
+        return searchBar
     }()
     
     override func viewDidLoad() {
@@ -53,19 +62,17 @@ class ListViewController: UIViewController {
     
     private func setupVC() {
         view.addSubview(collectionView)
+        view.addSubview(searchBar)
         collectionView.delegate = self
         collectionView.dataSource = self
-        activateConstraints()
-        prepareModelForCollectionView()
-    }
-    
-    private func activateConstraints() {
+        searchBar.delegate = self
         collectionView.snp.makeConstraints { make in
             make.leading.top.equalToSuperview()
             make.leading.bottom.equalToSuperview()
             make.leading.leading.equalToSuperview()
             make.leading.trailing.equalToSuperview()
         }
+        prepareModelForCollectionView()
     }
     
     func prepareModelForCollectionView() {
@@ -86,7 +93,6 @@ class ListViewController: UIViewController {
             modelForWork.updateValue(value.sorted { $0.atmID < $1.atmID }, forKey: key)
         })
     }
-    
 }
 
 extension ListViewController: UICollectionViewDataSource {
@@ -130,3 +136,15 @@ extension ListViewController: UICollectionViewDelegate {
     }
 }
 
+extension ListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let searchedTownIndex = townNames.firstIndex(where: { $0.lowercased().starts(with: searchText.lowercased())}) else { return }
+        self.collectionView.scrollToItem(at: IndexPath(item: 0, section: searchedTownIndex),
+                                         at: .top,
+                                         animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+}

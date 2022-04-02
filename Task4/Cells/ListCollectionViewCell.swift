@@ -9,44 +9,55 @@ import UIKit
 import SnapKit
 
 class ListCollectionViewCell: UICollectionViewCell {
-
     static let reuseIdentifier = "ListCell"
     var model: ATM?
-
+    
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.text = "Address"
         label.numberOfLines = 4
         label.font = Constants.Fonts.cellSubviewsFont
         label.adjustsFontSizeToFitWidth = true
+        label.textColor = .white
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private lazy var availabilityButton: UIButton = {
-        var button = UIButton(type: .system)
-        button.setTitle(Constants.Strings.availabilityButtonTitle, for: .normal)
+        var button = UIButton()
+        button.setTitle(Constants.Strings.availabilityButtonTitle,
+                        for: .normal)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.tintColor = Constants.Colors.appMainColor
+        button.tintColor = .white
+        button.layer.cornerRadius = 10
+        button.backgroundColor = Constants.Colors.appMainColor
+        button.layer.shadowOpacity = 0.95
+        button.layer.shadowRadius = 30
+        button.layer.shadowColor = UIColor.white.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        button.setContentCompressionResistancePriority(.required, for: .vertical)
+        button.setContentHuggingPriority(.defaultHigh,
+                                         for: .vertical)
+        button.setContentCompressionResistancePriority(.required,
+                                                       for: .vertical)
         return button
     }()
-
+    
     private lazy var currencyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Currency"
         label.font = Constants.Fonts.cellSubviewsFont
+        label.textColor = .white
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        label.setContentHuggingPriority(.defaultHigh,
+                                        for: .vertical)
+        label.setContentCompressionResistancePriority(.required,
+                                                      for: .vertical)
         return label
     }()
-
+    
     private lazy var contentStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -57,19 +68,19 @@ class ListCollectionViewCell: UICollectionViewCell {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         model = nil
     }
-
+    
     func setupCell() {
         availabilityButton.addTarget(self,
-                         action: #selector(didTapButton),
-                         for: .touchUpInside)
+                                     action: #selector(didTapButton),
+                                     for: .touchUpInside)
         addSubview(contentStackView)
-        [addressLabel, availabilityButton, currencyLabel].forEach { contentStackView.addArrangedSubview($0) }
-        self.backgroundColor = .white
+        [addressLabel, currencyLabel, availabilityButton].forEach { contentStackView.addArrangedSubview($0) }
+        self.backgroundColor = .lightGray
         self.layer.cornerRadius = Constants.Dimensions.defaultCornerRadius
         contentStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(Constants.Dimensions.defaultPadding)
@@ -79,9 +90,9 @@ class ListCollectionViewCell: UICollectionViewCell {
         }
         guard let atmModel = model else { return }
         addressLabel.text = atmModel.address.addressLine
-        currencyLabel.text = atmModel.currency.rawValue
+        currencyLabel.text = "\(Constants.Strings.currency) \(atmModel.currency.rawValue)"
     }
-
+    
     @objc private func didTapButton() {
         guard let model = model else { return }
         let availabilityView = AvailabilityView(for: model.availability.standardAvailability.day)
@@ -89,10 +100,10 @@ class ListCollectionViewCell: UICollectionViewCell {
         availabilityView.center = self.center
         self.superview?.addSubview(availabilityView)
         availabilityView.alpha = 0
-
+        availabilityButton.loadingAnimation()
         UIView.animate(withDuration: 0.3,
                        delay: 0,
-                       options: .transitionCrossDissolve,
+                       options: .transitionFlipFromLeft,
                        animations: {
             availabilityView.alpha = 1
         }, completion: nil)

@@ -42,7 +42,7 @@ class MapAnnotationView: MKAnnotationView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.preferredMaxLayoutWidth = Constants.Dimensions.maxContentWidth
+        label.preferredMaxLayoutWidth = Constants.Dimensions.maxLayoutWidth
         return label
     }()
     
@@ -56,6 +56,7 @@ class MapAnnotationView: MKAnnotationView {
     
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -73,10 +74,10 @@ class MapAnnotationView: MKAnnotationView {
         let path = CGMutablePath()
         let pointBezierPath = UIBezierPath()
         pointBezierPath.move(to: CGPoint(x: Constants.Dimensions.pointTableInSet,
-                                    y: 0))
+                                         y: 0))
         pointBezierPath.addLine(to: CGPoint.zero)
         pointBezierPath.addLine(to: CGPoint(x: Constants.Dimensions.pointTableInSet,
-                                       y: Constants.Dimensions.pointTableInSet))
+                                            y: Constants.Dimensions.pointTableInSet))
         let box = CGRect(x: Constants.Dimensions.pointTableInSet,
                          y: 0,
                          width: self.frame.size.width - Constants.Dimensions.pointTableInSet,
@@ -98,7 +99,7 @@ class MapAnnotationView: MKAnnotationView {
         return size
     }
     
-    private func setuoView() {
+    private func setupView() {
         backgroundColor = UIColor.white
         addSubview(visualView)
         addSubview(stackView)
