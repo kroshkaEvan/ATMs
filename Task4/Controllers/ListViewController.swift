@@ -39,7 +39,7 @@ class ListViewController: UIViewController {
         collectionView.register(SectionReusableView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: SectionReusableView.identifier)
-        collectionView.backgroundColor = Constants.Colors.appMainColor
+        collectionView.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.keyboardDismissMode = .onDrag
         return collectionView
@@ -48,7 +48,7 @@ class ListViewController: UIViewController {
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = Constants.Strings.searchBarPlaceholder
-        searchBar.showsCancelButton = true
+        searchBar.showsCancelButton = false
         searchBar.backgroundColor = .lightGray
         searchBar.sizeToFit()
         searchBar.isTranslucent = true

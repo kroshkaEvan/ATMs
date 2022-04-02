@@ -16,7 +16,7 @@ class ListCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Address"
         label.numberOfLines = 4
-        label.font = Constants.Fonts.cellSubviewsFont
+        label.font = Constants.Fonts.addressFont
         label.adjustsFontSizeToFitWidth = true
         label.textColor = .white
         label.textAlignment = .center

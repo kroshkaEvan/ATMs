@@ -10,24 +10,27 @@ import Foundation
 extension Constants {
     class Strings {
         static let urlString = "https://belarusbank.by/open-banking/v1.0/atms"
-        static let availabilityButtonTitle = "Timetable"
-        static let map = "Map"
-        static let list = "List"
+        static let availabilityButtonTitle = "Timetable".localizated()
+        static let map = "Map".localizated()
+        static let list = "List".localizated()
         static let section = "Section"
-        static let currency = "Currency"
-        static let searchBarPlaceholder = "Enter a city"
-        static let routeButtonText =  "Build Route"
-        static var currentLocation =  "Current location"
-        static let cashInYes = "Cash-In: Yes"
-        static let cashInNo = "Cash-In: No"
+        static let currency = "Currency:".localizated()
+        static let searchBarPlaceholder = "Enter a city".localizated()
+        static let routeButtonText =  "Build Route".localizated()
+        static var currentLocation =  "Current location".localizated()
+        static let cashInYes = "Cash-In: Yes".localizated()
+        static let cashInNo = "Cash-In: No".localizated()
+        static let unionPayYes = "Card service UnionPay: Yes".localizated()
+        static let unionPayNo = "Card service UnionPay: No".localizated()
         static let nameDictKey = "Name"
         static let cityDictKey = "City"
-        static let internetAlertMessage = "An active internet connection is required for the app to work properly. Please connect to the internet."
-        static let internetAlertTitle = "Internet connection unavailable"
-        static let internetAlertButtonTitle = "Dismiss"
-        static let errorAlertTitle = "Connection error"
-        static let errorAlertRepeatButtonTitle = "Retry"
-        static let errorAlertCloseButtonTitle = "Close"
+        static let service = "Service centers".localizated()
+        static let internetAlertMessage = "An active internet connection is required for the app to work properly. Please connect to the internet.".localizated()
+        static let internetAlertTitle = "Internet connection unavailable".localizated()
+        static let internetAlertButtonTitle = "Cancel".localizated()
+        static let errorAlertTitle = "Connection error".localizated()
+        static let errorAlertRepeatButtonTitle = "Retry".localizated()
+        static let errorAlertCloseButtonTitle = "Close".localizated()
     }
     
     enum Days {
@@ -43,23 +46,33 @@ extension Constants {
         var shortName: String {
             switch self {
             case .monday:
-                return "Mon"
+                return "Monday".localizated()
             case .tuesday:
-                return "Tue"
+                return "Tuesday".localizated()
             case .wednesday:
-                return "Wen"
+                return "Wednesday".localizated()
             case .thursday:
-                return "Thu"
+                return "Thursday".localizated()
             case .friday:
-                return "Fri"
+                return "Friday".localizated()
             case .saturday:
-                return "Sat"
+                return "Saturday".localizated()
             case .sunday:
-                return "Sun"
+                return "Sunday".localizated()
             case .weekend:
                 return "-"
             }
         }
+    }
+}
+
+extension String {
+    func localizated() -> String {
+        return NSLocalizedString(self,
+                                 tableName: "Localization",
+                                 bundle: .main,
+                                 value: self,
+                                 comment: self)
     }
 }
     

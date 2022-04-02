@@ -9,23 +9,26 @@ import UIKit
 
 class Constants {
     class Fonts {
-        static let defaultFontSize: CGFloat = 14
+        static let daySize: CGFloat = 15
+        static let addressSize: CGFloat = 19
         static let sectionFontSize: CGFloat = 16
         static let sectionFont = UIFont.systemFont(ofSize: sectionFontSize,
                                                    weight: .light)
-        static let cellSubviewsFont = UIFont.systemFont(ofSize: defaultFontSize,
+        static let cellSubviewsFont = UIFont.systemFont(ofSize: daySize,
                                                         weight: .light)
+        static let addressFont = UIFont.systemFont(ofSize: addressSize,
+                                                   weight: .light)
     }
     
     class Colors {
-        static let appMainColor = UIColor(red: 186 / 255,
-                                          green: 104 / 255,
-                                          blue: 106 / 255,
-                                          alpha: 1)
+        static let appMainColor = UIColor(red: 250 / 255,
+                                          green: 54 / 255,
+                                          blue: 51 / 255,
+                                          alpha: 0.6)
     }
 
     class Dimensions {
-        static let cellsSpacing: CGFloat = 10
+        static let cellsSpacing: CGFloat = 5
         static let defaultPadding: CGFloat = 5
         static let defaultCornerRadius: CGFloat = 7
         static let sectionHeight: CGFloat = 30

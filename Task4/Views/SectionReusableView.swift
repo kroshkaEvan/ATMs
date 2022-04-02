@@ -30,13 +30,12 @@ class SectionReusableView: UICollectionReusableView {
     
     private func setupView() {
         self.addSubview(sectionLabel)
-        self.backgroundColor = .white.withAlphaComponent(0.1)
+        self.backgroundColor = Constants.Colors.appMainColor
         self.layer.cornerRadius = Constants.Dimensions.defaultCornerRadius
         sectionLabel.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top).offset(Constants.Dimensions.defaultPadding)
             make.bottom.equalTo(self.snp.bottom).offset(-Constants.Dimensions.defaultPadding)
-            make.leading.equalTo(self.snp.leading).offset(Constants.Dimensions.defaultPadding)
-            
+            make.center.equalTo(self.snp.center).offset(Constants.Dimensions.defaultPadding)
         }
     }
 }

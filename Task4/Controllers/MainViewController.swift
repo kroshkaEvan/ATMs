@@ -52,7 +52,7 @@ class MainViewController: UIViewController {
     
     private lazy var updateButton: UIBarButtonItem = { UIBarButtonItem(barButtonSystemItem: .refresh,
                                                                        target: self,
-                                                                       action: #selector(updateModel)) } ()
+                                                                       action: #selector(updateModel))} ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +76,7 @@ class MainViewController: UIViewController {
         self.model = nil
         listViewController.model = nil
         mapViewController.model = nil
-        networkManager.fetchATMData { model, _ in
+        networkManager.fetchData { model, _ in
             self.model = model
             self.listViewController.model = model?.data.atm
             self.mapViewController.model = model?.data.atm
@@ -130,7 +130,9 @@ class MainViewController: UIViewController {
         view.addSubview(segmentedControl)
         view.addSubview(contentView)
         view.backgroundColor = .gray
-        self.navigationItem.setRightBarButton(updateButton, animated: true)
+        navigationController?.navigationBar.topItem?.title = Constants.Strings.service
+        updateButton.tintColor = .black
+        navigationItem.rightBarButtonItems = [updateButton]
         setDefaultSegment()
         segmentedControl.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -154,10 +156,8 @@ class MainViewController: UIViewController {
         switch selectedSegment {
         case 0:
             setDefaultSegment()
-            navigationController?.navigationBar.topItem?.title = Constants.Strings.map
         case 1:
             self.changeVCs(view: contentView, listViewController, mapViewController)
-            navigationController?.navigationBar.topItem?.title = Constants.Strings.list
         default:
             break
         }

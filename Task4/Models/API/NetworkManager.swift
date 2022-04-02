@@ -16,7 +16,7 @@ enum NetworkError: Error {
 
 struct NetworkManager {
 
-    func fetchATMData(completion: CompletionClosure?) {
+    func fetchData(completion: CompletionClosure?) {
         guard let request = createRequest(for: Constants.Strings.urlString) else {
             completion?(nil, NetworkError.invalidUrl)
             return
@@ -54,6 +54,5 @@ struct NetworkManager {
         }
         dataTask.resume()
     }
-
 }
 

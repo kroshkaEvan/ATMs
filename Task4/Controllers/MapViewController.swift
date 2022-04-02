@@ -168,10 +168,19 @@ extension MapViewController: MKMapViewDelegate {
         let ATMAvailability = atm.availability.standardAvailability.day
         let isCashInavailable = atm.services.contains(where: { $0.serviceType == .cashIn })
         let currency = atm.currency
+        let cardsATMs = atm.cards
         
         let availabilityView = AvailabilityView(for: ATMAvailability)
         availabilityView.isUserInteractionEnabled = false
         
+        let cardsLabel = UILabel()
+        if cardsATMs.contains(Card.unionPay) {
+            cardsLabel.text = Constants.Strings.unionPayYes
+        } else {
+            cardsLabel.text = Constants.Strings.unionPayNo
+        }
+        cardsLabel.font = Constants.Fonts.cellSubviewsFont
+
         let cashInLabel = UILabel()
         if isCashInavailable {
             cashInLabel.text = Constants.Strings.cashInYes
@@ -181,11 +190,11 @@ extension MapViewController: MKMapViewDelegate {
         cashInLabel.font = Constants.Fonts.cellSubviewsFont
         
         let currencyLabel = UILabel()
-        currencyLabel.text = "        \(Constants.Strings.currency) \(currency.rawValue)"
+        currencyLabel.text = "\(Constants.Strings.currency) \(currency.rawValue)"
         currencyLabel.font = Constants.Fonts.cellSubviewsFont
         
         let detailsStack = UIStackView()
-        [availabilityView, cashInLabel, currencyLabel].forEach({ detailsStack.addArrangedSubview($0) })
+        [availabilityView, cardsLabel, cashInLabel, currencyLabel].forEach({ detailsStack.addArrangedSubview($0) })
         detailsStack.axis = .vertical
         detailsStack.alignment = .leading
         detailsStack.distribution = .fill
