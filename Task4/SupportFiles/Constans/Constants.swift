@@ -36,9 +36,9 @@ class Constants {
         static let interItemSpacing = CGFloat(10)
         static let maxLayoutWidth = CGFloat(300)
         static let sizeContent = UIEdgeInsets(top: 10,
-                                                left: 30,
-                                                bottom: 20,
-                                                right: 20)
+                                              left: 30,
+                                              bottom: 20,
+                                              right: 20)
     }
     
     class Location {

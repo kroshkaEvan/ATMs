@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
         let mapView = MKMapView()
         mapView.delegate = self
         mapView.register(MKMarkerAnnotationView.self,
-                         forAnnotationViewWithReuseIdentifier: NSStringFromClass(MapAnnotation.self))
+                         forAnnotationViewWithReuseIdentifier: NSStringFromClass(MapAnnotationView.self))
         view.addSubview(mapView)
         return mapView
     }()
@@ -82,7 +82,7 @@ class MapViewController: UIViewController {
         model.forEach { [weak self] atm in
             let latitude = Double(atm.address.geolocation.geographicCoordinates.latitude) ?? 0
             let longtitude = Double(atm.address.geolocation.geographicCoordinates.longitude) ?? 0
-            let annotation = MapAnnotation()
+            let annotation = MapAnnotationView()
             annotation.title = atm.address.addressLine
             annotation.coordinate = CLLocationCoordinate2D(latitude: latitude,
                                                            longitude: longtitude)
@@ -138,25 +138,20 @@ extension MapViewController: MKMapViewDelegate {
         guard !annotation.isKind(of: MKUserLocation.self) else { return nil }
         
         var annotationView: MKAnnotationView?
-        if let annotation = annotation as? MapAnnotation {
+        if let annotation = annotation as? MapAnnotationView {
             annotationView = setupAnnotationView(for: annotation, on: mapView)
         }
         return annotationView
     }
     
-    private func setupAnnotationView(for annotation: MapAnnotation, on mapView: MKMapView) -> MKAnnotationView {
-        let identifier = NSStringFromClass(MapAnnotation.self)
+    private func setupAnnotationView(for annotation: MapAnnotationView, on mapView: MKMapView) -> MKAnnotationView {
+        let identifier = NSStringFromClass(MapAnnotationView.self)
         let view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
         if let markerAnnotationView = view as? MKMarkerAnnotationView {
             markerAnnotationView.animatesWhenAdded = true
             markerAnnotationView.canShowCallout = true
             markerAnnotationView.markerTintColor = Constants.Colors.appMainColor
-            
-            let rightButton = UIButton(type: .detailDisclosure)
-            markerAnnotationView.rightCalloutAccessoryView = rightButton
-            
             let selectedATM = model?.first(where: { $0.address.addressLine == view.annotation?.title })
-            
             markerAnnotationView.detailCalloutAccessoryView = setupMarkerDetails(for: selectedATM)
         }
         return view

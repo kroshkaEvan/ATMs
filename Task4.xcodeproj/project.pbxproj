@@ -25,7 +25,7 @@
 		BC70CBE627DF46160003CEC4 /* MapLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE527DF46160003CEC4 /* MapLocationManager.swift */; };
 		BC70CBE827DF46480003CEC4 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE727DF46480003CEC4 /* Time.swift */; };
 		BC70CBEA27DF4C5F0003CEC4 /* HTTPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE927DF4C5F0003CEC4 /* HTTPModel.swift */; };
-		BC70CBF427DF71830003CEC4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF327DF71830003CEC4 /* MapView.swift */; };
+		BC70CBF427DF71830003CEC4 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF327DF71830003CEC4 /* MapAnnotationView.swift */; };
 		BC70CBF627DF71F10003CEC4 /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF527DF71F10003CEC4 /* AvailabilityView.swift */; };
 		BC70CBF827DF87780003CEC4 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF727DF87780003CEC4 /* ListCollectionViewCell.swift */; };
 		BC70CBFA27DF887D0003CEC4 /* SectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBF927DF887D0003CEC4 /* SectionReusableView.swift */; };
@@ -62,7 +62,7 @@
 		BC70CBE527DF46160003CEC4 /* MapLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationManager.swift; sourceTree = "<group>"; };
 		BC70CBE727DF46480003CEC4 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		BC70CBE927DF4C5F0003CEC4 /* HTTPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPModel.swift; sourceTree = "<group>"; };
-		BC70CBF327DF71830003CEC4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BC70CBF327DF71830003CEC4 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
 		BC70CBF527DF71F10003CEC4 /* AvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
 		BC70CBF727DF87780003CEC4 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		BC70CBF927DF887D0003CEC4 /* SectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionReusableView.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				BCED481427E1E7260095C595 /* LoadingView.swift */,
-				BC70CBF327DF71830003CEC4 /* MapView.swift */,
+				BC70CBF327DF71830003CEC4 /* MapAnnotationView.swift */,
 				BC70CBF527DF71F10003CEC4 /* AvailabilityView.swift */,
 				BC70CBF927DF887D0003CEC4 /* SectionReusableView.swift */,
 			);
@@ -381,7 +381,7 @@
 				BC70CBEA27DF4C5F0003CEC4 /* HTTPModel.swift in Sources */,
 				BC70CBDF27DF44CB0003CEC4 /* ATMModel.swift in Sources */,
 				BC70CBF627DF71F10003CEC4 /* AvailabilityView.swift in Sources */,
-				BC70CBF427DF71830003CEC4 /* MapView.swift in Sources */,
+				BC70CBF427DF71830003CEC4 /* MapAnnotationView.swift in Sources */,
 				BC70CBE827DF46480003CEC4 /* Time.swift in Sources */,
 				BC5F4AAA27CBBD8200E82425 /* NetworkManager.swift in Sources */,
 				BC6FED5427F8DFAA001AE091 /* Currency.swift in Sources */,

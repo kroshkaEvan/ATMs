@@ -69,16 +69,32 @@ class ListCollectionViewCell: UICollectionViewCell {
         return stack
     }()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        activateConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         model = nil
     }
     
-    func setupCell() {
+    func setup(viewModel: ATM?) {
+        guard let atmModel = viewModel else { return }
+        addressLabel.text = atmModel.address.addressLine
+        currencyLabel.text = "\(Constants.Strings.currency) \(atmModel.currency.rawValue)"
+        self.model = viewModel
+    }
+    
+    func activateConstraints() {
+        addSubview(contentStackView)
         availabilityButton.addTarget(self,
                                      action: #selector(didTapButton),
                                      for: .touchUpInside)
-        addSubview(contentStackView)
         [addressLabel, currencyLabel, availabilityButton].forEach { contentStackView.addArrangedSubview($0) }
         self.backgroundColor = .lightGray
         self.layer.cornerRadius = Constants.Dimensions.defaultCornerRadius
@@ -88,9 +104,6 @@ class ListCollectionViewCell: UICollectionViewCell {
             make.trailing.equalToSuperview().offset(-Constants.Dimensions.defaultPadding)
             make.bottom.equalToSuperview().offset(-Constants.Dimensions.defaultPadding)
         }
-        guard let atmModel = model else { return }
-        addressLabel.text = atmModel.address.addressLine
-        currencyLabel.text = "\(Constants.Strings.currency) \(atmModel.currency.rawValue)"
     }
     
     @objc private func didTapButton() {

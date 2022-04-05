@@ -129,9 +129,9 @@ class AvailabilityView: UIView {
     private func setupView() {
         addSubview(mainStackview)
         [shortNameStackView, dynamicStackView].forEach { mainStackview.addArrangedSubview($0) }
-        let gesture = UITapGestureRecognizer(target: self,
-                                             action: #selector(didTapClose(_:)))
-        addGestureRecognizer(gesture)
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(didTapClose(_:)))
+        addGestureRecognizer(tap)
         backgroundColor = .white
         configureLabels()
         mainStackview.snp.makeConstraints { make in

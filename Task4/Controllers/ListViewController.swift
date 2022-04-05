@@ -109,8 +109,7 @@ extension ListViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.reuseIdentifier, for: indexPath)
         if let cell = cell as? ListCollectionViewCell {
             let key = townNames[indexPath.section]
-            cell.model = modelForWork[key]?[indexPath.row]
-            cell.setupCell()
+            cell.setup(viewModel: modelForWork[key]?[indexPath.row])
         }
         return cell
     }
