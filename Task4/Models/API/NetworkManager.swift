@@ -8,6 +8,7 @@
 import Foundation
 
 typealias CompletionClosure = ((ATMModel?, Error?) -> Void)
+typealias CurrencyClosure = ((CurrencyModel?, Error?) -> Void)
 
 enum NetworkError: Error {
     case invalidUrl
@@ -17,8 +18,16 @@ enum NetworkError: Error {
 struct NetworkManager {
 
     func fetchData(completion: CompletionClosure?) {
-        guard let request = createRequest(for: Constants.Strings.urlString) else {
+        guard let request = createRequest(for: Constants.Strings.urlATMs) else {
             completion?(nil, NetworkError.invalidUrl)
+            return
+        }
+        executeRequest(request: request, completion: completion)
+    }
+    
+    func getCurrencyData(completion: @escaping CurrencyClosure) {
+        guard let request = createRequest(for: Constants.Strings.urlCurrency) else {
+            completion(nil, NetworkError.invalidUrl)
             return
         }
         executeRequest(request: request, completion: completion)
@@ -54,5 +63,26 @@ struct NetworkManager {
         }
         dataTask.resume()
     }
+    
+//    func getCurrencyData(complition: @escaping (CurrencyModel) -> ()) {
+//        
+//        guard let url = URL(string: "https://belarusbank.by/api/kursExchange") else {
+//            print("Ошибка в получении URL адресса")
+//            return }
+//        
+//        URLSession.shared.dataTask(with: url) { data, response, error in
+//            
+//            guard let data = data else { return }
+//            
+//            do {
+//                let jsonDecoder = JSONDecoder()
+//                let currency = try jsonDecoder.decode(Currency.self, from: data)
+//                complition(currency[0])
+//            } catch let error {
+//               print("Localization error: \(error)")
+//            }
+//            
+//        }.resume()
+//    }
 }
 

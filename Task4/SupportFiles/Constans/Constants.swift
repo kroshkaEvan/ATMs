@@ -42,6 +42,6 @@ class Constants {
     }
     
     class Location {
-        static let distance: Double = 200
+        static let distance: Double = 700
     }
 }

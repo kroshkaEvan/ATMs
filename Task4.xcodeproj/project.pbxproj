@@ -17,6 +17,7 @@
 		BC69EBC127C4FD09006D85DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC69EBC027C4FD09006D85DD /* Assets.xcassets */; };
 		BC69EBC427C4FD09006D85DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC69EBC227C4FD09006D85DD /* LaunchScreen.storyboard */; };
 		BC6FED4F27F89913001AE091 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC6FED5127F89913001AE091 /* Localization.strings */; };
+		BC6FED5427F8DFAA001AE091 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6FED5327F8DFAA001AE091 /* Currency.swift */; };
 		BC70CBD927DF3B110003CEC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBD827DF3B110003CEC4 /* Constants.swift */; };
 		BC70CBDF27DF44CB0003CEC4 /* ATMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBDE27DF44CB0003CEC4 /* ATMModel.swift */; };
 		BC70CBE227DF45480003CEC4 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70CBE127DF45480003CEC4 /* Service.swift */; };
@@ -53,6 +54,7 @@
 		BC6FED4B27F898D2001AE091 /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		BC6FED5027F89913001AE091 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localization.strings; sourceTree = "<group>"; };
 		BC6FED5227F89915001AE091 /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/Localization.strings"; sourceTree = "<group>"; };
+		BC6FED5327F8DFAA001AE091 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		BC70CBD827DF3B110003CEC4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BC70CBDE27DF44CB0003CEC4 /* ATMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMModel.swift; sourceTree = "<group>"; };
 		BC70CBE127DF45480003CEC4 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				BC70CBE727DF46480003CEC4 /* Time.swift */,
 				BC70CBE127DF45480003CEC4 /* Service.swift */,
 				BC70CBE527DF46160003CEC4 /* MapLocationManager.swift */,
+				BC6FED5327F8DFAA001AE091 /* Currency.swift */,
 			);
 			path = ATM;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				BC70CBF427DF71830003CEC4 /* MapView.swift in Sources */,
 				BC70CBE827DF46480003CEC4 /* Time.swift in Sources */,
 				BC5F4AAA27CBBD8200E82425 /* NetworkManager.swift in Sources */,
+				BC6FED5427F8DFAA001AE091 /* Currency.swift in Sources */,
 				BC70CBE227DF45480003CEC4 /* Service.swift in Sources */,
 				BC70CBF827DF87780003CEC4 /* ListCollectionViewCell.swift in Sources */,
 				BCED481527E1E7260095C595 /* LoadingView.swift in Sources */,

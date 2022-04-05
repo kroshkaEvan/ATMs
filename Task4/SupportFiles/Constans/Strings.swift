@@ -9,7 +9,8 @@ import Foundation
 
 extension Constants {
     class Strings {
-        static let urlString = "https://belarusbank.by/open-banking/v1.0/atms"
+        static let urlATMs = "https://belarusbank.by/open-banking/v1.0/atms"
+        static let urlCurrency = "https://belarusbank.by/api/kursExchange"
         static let availabilityButtonTitle = "Timetable".localizated()
         static let map = "Map".localizated()
         static let list = "List".localizated()

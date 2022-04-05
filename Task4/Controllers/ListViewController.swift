@@ -67,7 +67,7 @@ class ListViewController: UIViewController {
         collectionView.dataSource = self
         searchBar.delegate = self
         collectionView.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview()
+            make.leading.top.equalTo(searchBar.bottom)
             make.leading.bottom.equalToSuperview()
             make.leading.leading.equalToSuperview()
             make.leading.trailing.equalToSuperview()
@@ -140,7 +140,7 @@ extension ListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchedTownIndex = townNames.firstIndex(where: { $0.lowercased().starts(with: searchText.lowercased())}) else { return }
         self.collectionView.scrollToItem(at: IndexPath(item: 0, section: searchedTownIndex),
-                                         at: .top,
+                                         at: .centeredVertically,
                                          animated: true)
     }
     
