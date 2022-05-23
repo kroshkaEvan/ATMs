@@ -11,3 +11,7 @@ The application was created using the SnapKit library, Cocoa MVC architecture an
 ![Снимок экрана 2022-04-06 в 10 41 07](https://user-images.githubusercontent.com/95620294/161922058-6747def8-3746-4174-9136-2621317257fb.png)
 ![Снимок экрана 2022-04-06 в 10 41 35](https://user-images.githubusercontent.com/95620294/161922067-fc841638-3d2f-4742-a56d-1fa2eaae4add.png)
 ![Снимок экрана 2022-04-06 в 10 41 58](https://user-images.githubusercontent.com/95620294/161922082-aa6504cf-adef-494b-a773-7ba193326116.png)
+
+
+https://user-images.githubusercontent.com/95620294/169778315-fff2a164-38f4-4014-af36-33d7ee434090.mp4
+
